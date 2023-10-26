@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # print the feilds from file etc/passwd in sentense
 
-
-if [ -e "/etc/passwd" ]; then
-while IFS=':' read -r USERNAME Pass userID GROUPID UserInf HOMEDIR SHELL ; do
-    echo "The user $USERNAME is part of the $GROUPID gang, lives in $HOMEDIR and rides $SHELL. $userID's place is protected by the passcode $Pass, more info about the user here: $UserInf"
-done < "/etc/passwd"
+FILE=/etc/passwd
+if [ -e "$FILE" ]; then
+while IFS=':' read -r f1 f2 f3 f4 f5 f6 f7 ; do
+    echo "The user $f1 is part of the $f4 gang, lives in $f6 and rides $f7. $f3's place is protected by the passcode $f2, more info about the user here: $f5"
+done < "$FILE"
 fi
