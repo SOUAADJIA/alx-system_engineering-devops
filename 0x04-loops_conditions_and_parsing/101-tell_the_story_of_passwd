@@ -3,7 +3,7 @@
 
 
 if [ -e "/etc/passwd" ]; then
-	while IFS=':' read -r USERNAME Pass userID GROUP_ID UserInf HOME_DIR SHELL ; do
-		    echo "The user $USERNAME is part of the $GROUP_ID gang, lives in $HOME_DIR and rides $SHELL. $userID's place is protected by the passcode $Pass, more info about the user here: $UserInf"
-	    done < "/etc/passwd"
+while IFS=':' read -r USERNAME Pass userID GROUPID UserInf HOMEDIR SHELL ; do
+    echo "The user $USERNAME is part of the $GROUPID gang, lives in $HOMEDIR and rides $SHELL. $userID's place is protected by the passcode $Pass, more info about the user here: $UserInf"
+done < "/etc/passwd"
 fi
