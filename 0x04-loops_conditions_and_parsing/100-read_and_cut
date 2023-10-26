@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# print the feilds username, userID, Home Dirictory from file etc/passwd
+
+FILE=/etc/passwd
+if [ -e "$FILE" ]; then
+while IFS=':' read -r username userID HomeDir _; do
+    echo "$username:$userID:$HomeDir"
+done < "$FILE"
+fi
