@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# parse the apache logs
+
+FILE=apache-access.log
+if [ -e "$FILE" ]; then
+awk '{printf "%s %s\n", $1, $9}' "$FILE"
+fi
