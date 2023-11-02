@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-# This script displays all active IPv4 IPs on the machine using ip
+# Displays all acive IPv4 addresses on the machine.
 
-# Use ip command to get network interface configuration information
-# Use awk to extract IPv4 addresses and print them
-
-ip -4 addr show | awk '/inet / {print $2}' | cut -d'/' -f1
-
-#ifconfig | awk '/inet addr/{print substr($2,6)}'
-
-#arp | awk '{print $1}' | tail -n +2
+ifconfig | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | cut -b 11-
