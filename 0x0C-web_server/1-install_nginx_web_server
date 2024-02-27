@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# install nginx
+
+apt update -y
+apt install -y nginx
+
+# Allow incoming traffic on port 80 (Nginx HTTP) using ufw
+ufw allow 'Nginx HTTP'
+
+# Create a simple HTML page with the content "Hello World!" and save it to the default Nginx document root
+echo "Hello World!" > /var/www/html/index.html
+
+# Start the Nginx service
+service nginx start
