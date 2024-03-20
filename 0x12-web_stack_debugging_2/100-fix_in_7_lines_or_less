@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-sudo service nginx stop
-echo "user nginx;" >> /etc/nginx/nginx.conf
+# Using what you did for task #1, make your fix short and sweet
+sed -i 's/user www-data/user nginx/' /etc/nginx/nginx.conf
 chmod 644 /etc/nginx/nginx.conf
 sed -i 's/80/8080/g' /etc/nginx/sites-available/default
 pkill apache2
-sudo -u nginx service nginx start
+sudo -u nginx service nginx restart
