@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Gather data from an API and write to JSON."""
-import requests
 import json
+import requests
 import sys
 
 
