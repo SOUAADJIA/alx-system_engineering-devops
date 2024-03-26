@@ -8,32 +8,33 @@ if __name__ == "__main__":
         print("Usage: python script.py <employee_id>")
         sys.exit(1)
 
-    user_ID = sys.argv[1]
+    employee_id = sys.argv[1]
 
-    url = "https://jsonplaceholder.typicode.com"
-    user_url = "{}/users/{}".format(url, user_ID)
-    data_url = "{}/todos?userId={}".format(url, user_ID)
+    base_url = "https://jsonplaceholder.typicode.com"
+    user_url = "{}/users/{}".format(base_url, employee_id)
+    todos_url = "{}/todos?userId={}".format(base_url, employee_id)
 
-    # Get user's info
-    resp = requests.get(user_url)
-    if resp.status_code != 200:
-        print("Error fetching user data:", resp.text)
-        sys.exit(1)
-    user = resp.json()
+    user_resp = requests.get(user_url)
+    user_data = user_resp.json()
 
-    # Get user's todos
-    resp = requests.get(data_url)
-    if resp.status_code != 200:
-        print("Error fetching TODO data:", resp.text)
-        sys.exit(1)
-    todos = resp.json()
+    todos_resp = requests.get(todos_url)
+    todos = todos_resp.json()
 
-    done = sum(1 for task in todos if task.get("completed"))
-    total = len(todos)
-
-    print("Employee {} is done with tasks({}/{}):".format(
-        user.get("name"), done, total))
+    completed_tasks = 0
+    total_tasks = len(todos)
 
     for task in todos:
         if task.get("completed"):
-            print("\t{}".format(task.get("title")))
+            completed_tasks += 1
+
+    print("Employee {} is done with tasks({}/{}):".format(
+        user_data.get("name"), completed_tasks, total_tasks))
+
+    for task in todos:
+        if task.get("completed"):
+            title = task.get("title")
+            # Check formatting of task title
+            if title.startswith('\t ') and title.endswith('\n'):
+                print("\t{}: Format OK".format(title))
+            else:
+                print("\t{}: Incorrect Format".format(title))
