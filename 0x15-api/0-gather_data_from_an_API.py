@@ -29,9 +29,4 @@ if __name__ == "__main__":
 
     for task in todos:
         if task.get("completed"):
-            title = task.get("title")
-            # Check formatting of task title
-            if title.startswith('\t ') and title.endswith('\n'):
-                print("\t{}: Format OK".format(title))
-            else:
-                print("\t{}: Incorrect Format".format(title))
+            print("\t {}".format(task.get("title")))
