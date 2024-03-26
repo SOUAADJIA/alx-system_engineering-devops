@@ -30,4 +30,3 @@ if __name__ == "__main__":
             print("\t{}".format(task.get("title")))
     except requests.RequestException as e:
         print("Error fetching data:", e)
-
