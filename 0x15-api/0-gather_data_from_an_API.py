@@ -27,6 +27,10 @@ if __name__ == "__main__":
         print(employee_str.format(employee_name), end="")
         print("({}/{}):".format(len(tasks), len(res.json())))
         for task in tasks:
-            print("\t{}".format(task.get("title")))
+            title = task.get("title")
+            if title.startswith('\t ') and title.endswith('\n'):
+                print("\t{}".format(title))
+            else:
+                print("\tTask formatting incorrect:", title)
     except requests.RequestException as e:
         print("Error fetching data:", e)
