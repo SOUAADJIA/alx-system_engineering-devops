@@ -14,8 +14,8 @@ if __name__ == "__main__":
     user_resp = requests.get(user_url)
     user_data = user_resp.json()
 
-    user_resp = requests.get(data_url)
-    todos = user_resp.json()
+    todos_resp = requests.get(todos_url)  # Corrected variable name
+    todos = todos_resp.json()  # Corrected variable name
 
     username = user_data.get("username")
     with open(employee_id + ".csv", "w") as file:
