@@ -6,7 +6,7 @@ import sys
 
 if __name__ == "__main__":
     employee_id = sys.argv[1]
-
+    
     base_url = "https://jsonplaceholder.typicode.com"
     user_url = "{}/users/{}".format(base_url, employee_id)
     todos_url = "{}/todos?userId={}".format(base_url, employee_id)
@@ -14,8 +14,8 @@ if __name__ == "__main__":
     user_resp = requests.get(user_url)
     user_data = user_resp.json()
 
-    todos_resp = requests.get(todos_url)
-    todos = todos_resp.json()
+    user_resp = requests.get(data_url)
+    todos = user_resp.json()
 
     username = user_data.get("username")
     with open(employee_id + ".csv", "w") as file:
