@@ -1,14 +1,11 @@
 #!/usr/bin/python3
-"""Gather data from an API and export to CSV."""
+"""Gather data from an API and write to CSV."""
 import csv
 import requests
 import sys
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <employee_id>")
-        sys.exit(1)
 
+if __name__ == "__main__":
     employee_id = sys.argv[1]
 
     base_url = "https://jsonplaceholder.typicode.com"
@@ -25,8 +22,7 @@ if __name__ == "__main__":
 
     csv_filename = "{}.csv".format(employee_id)
     with open(csv_filename, 'w', newline='') as csvfile:
-        fieldnames = [
-                "USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
+        fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
 
