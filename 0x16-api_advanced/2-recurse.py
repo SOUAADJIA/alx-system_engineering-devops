@@ -6,7 +6,7 @@ import requests
 
 def recurse(subreddit, hot_list=[], after=None):
     """
-    Recursively queries the Reddit API to retrieve hot articles for a given subreddit.
+    Recursively queries the Reddit API to retrieve hot articles
     """
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     headers = {"User-Agent": "My Reddit Client (by /u/your_username)"}
