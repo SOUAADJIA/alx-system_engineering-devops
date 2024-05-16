@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# Get the process ID (PID) of the Gunicorn master
+# Reload Gunicorn without service interruption
 pgrep gunicorn | xargs -n 1 kill -HUP
+
